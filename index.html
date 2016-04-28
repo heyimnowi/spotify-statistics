@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>infovis ♡</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/css/vendor.css" rel="stylesheet">
+    <link href="/css/application.css" rel="stylesheet">
+    <base href="/">
+  </head>
+  <body ng-app="app-bootstrap">
+    <div ui-view="main" class="main"></div>
+    <!-- inject:js-->
+    <script src="/js/vendor/angular.js"></script>
+    <script src="/js/vendor/angular-ui-router.js"></script>
+    <script src="/js/vendor/angular-local-storage.js"></script>
+    <script src="/js/vendor/lodash.js"></script>
+    <script src="/js/vendor/restangular.js"></script>
+    <script src="/js/vendor/angular-translate.js"></script>
+    <script src="/js/vendor/d3.js"></script>
+    <script src="/js/vendor/nv.d3.js"></script>
+    <script src="/js/vendor/angular-nvd3.js"></script>
+    <script src="/js/app.module.js"></script>
+    <script src="/js/app/app.config.js"></script>
+    <script src="/js/app/app.routes.js"></script>
+    <script src="/js/app/app.translations.js"></script>
+    <script src="/js/app/config/development.js"></script>
+    <script src="/js/app/models/AbstractModel.js"></script>
+    <script src="/js/app/models/ExampleModel.js"></script>
+    <script src="/js/app/services/albumService.js"></script>
+    <script src="/js/app/services/artistService.js"></script>
+    <script src="/js/app/services/trackService.js"></script>
+    <script src="/js/app/services/userService.js"></script>
+    <script src="/js/app/components/centered/minutes_per_day/minutesPerDayController.js"></script>
+    <script src="/js/app/components/centered/top_artists/topArtistsController.js"></script>
+    <script src="/js/app/components/centered/top_tracks/topTracksController.js"></script>
+    <!-- endinject-->
+  </body>
+</html>

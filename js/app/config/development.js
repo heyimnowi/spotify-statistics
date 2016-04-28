@@ -1,0 +1,6 @@
+'use strict';
+
+angular.module('app-bootstrap').constant('configuration', {
+  apiUrl: 'http://ws.audioscrobbler.com/2.0/'
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9jb25maWcvZGV2ZWxvcG1lbnQuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxRQUFRLE1BQVIsQ0FBZSxlQUFmLEVBQWdDLFFBQWhDLENBQXlDLGVBQXpDLEVBQTBEO0FBQ3hELFVBQVE7QUFEZ0QsQ0FBMUQiLCJmaWxlIjoiYXBwL2NvbmZpZy9kZXZlbG9wbWVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImFuZ3VsYXIubW9kdWxlKCdhcHAtYm9vdHN0cmFwJykuY29uc3RhbnQoJ2NvbmZpZ3VyYXRpb24nLCB7XG4gIGFwaVVybDogJ2h0dHA6Ly93cy5hdWRpb3Njcm9iYmxlci5jb20vMi4wLydcbn0pO1xuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

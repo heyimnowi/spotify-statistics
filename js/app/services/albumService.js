@@ -1,0 +1,16 @@
+'use strict';
+
+angular.module('app-bootstrap').factory('albumService', ['$http', function ($http) {
+
+  return {
+    // Get the metadata and tracklist for an album on Last.fm
+    getAlbumInfo: function getAlbumInfo(album, artist) {
+      return $http.post('http://ws.audioscrobbler.com/2.0/?' + 'method=album.getInfo' + '&artist=' + artist + '&album=' + album + '&apikey=42188804bb4145d42e9cfbd2e260c53c' + '&format=json');
+    },
+    // Get the top tags for an album on Last.fm, ordered by popularity.
+    getAlbumTopTags: function getAlbumTopTags(artist, album) {
+      return $http.post('http://ws.audioscrobbler.com/2.0/?' + 'method=album.gettoptags' + '&album=' + album + '&artist=' + artist + '&api_key=42188804bb4145d42e9cfbd2e260c53c' + '&format=json');
+    }
+  };
+}]);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9zZXJ2aWNlcy9hbGJ1bVNlcnZpY2UuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxRQUFRLE1BQVIsQ0FBZSxlQUFmLEVBQWdDLE9BQWhDLENBQXdDLGNBQXhDLEVBQXdELENBQ3RELE9BRHNELEVBRXRELFVBQVUsS0FBVixFQUFpQjs7QUFFZixTQUFPOztBQUVMLGtCQUFjLHNCQUFDLEtBQUQsRUFBUSxNQUFSLEVBQW1CO0FBQy9CLGFBQU8sTUFBTSxJQUFOLENBQVcsdUNBQ2hCLHNCQURnQixHQUVoQixVQUZnQixHQUVILE1BRkcsR0FHaEIsU0FIZ0IsR0FHSixLQUhJLEdBSWhCLDBDQUpnQixHQUtoQixjQUxLLENBQVA7QUFNRCxLQVRJOztBQVdMLHFCQUFpQix5QkFBVSxNQUFWLEVBQWtCLEtBQWxCLEVBQXlCO0FBQ3hDLGFBQU8sTUFBTSxJQUFOLENBQVcsdUNBQ2hCLHlCQURnQixHQUVoQixTQUZnQixHQUVKLEtBRkksR0FHaEIsVUFIZ0IsR0FHSCxNQUhHLEdBSWhCLDJDQUpnQixHQUtoQixjQUxLLENBQVA7QUFNRDtBQWxCSSxHQUFQO0FBcUJELENBekJxRCxDQUF4RCIsImZpbGUiOiJhcHAvc2VydmljZXMvYWxidW1TZXJ2aWNlLmpzIiwic291cmNlc0NvbnRlbnQiOlsiYW5ndWxhci5tb2R1bGUoJ2FwcC1ib290c3RyYXAnKS5mYWN0b3J5KCdhbGJ1bVNlcnZpY2UnLCBbXG4gICckaHR0cCcsXG4gIGZ1bmN0aW9uICgkaHR0cCkge1xuXG4gICAgcmV0dXJuIHtcbiAgICAgIC8vIEdldCB0aGUgbWV0YWRhdGEgYW5kIHRyYWNrbGlzdCBmb3IgYW4gYWxidW0gb24gTGFzdC5mbVxuICAgICAgZ2V0QWxidW1JbmZvOiAoYWxidW0sIGFydGlzdCkgPT4ge1xuICAgICAgICByZXR1cm4gJGh0dHAucG9zdCgnaHR0cDovL3dzLmF1ZGlvc2Nyb2JibGVyLmNvbS8yLjAvPycgK1xuICAgICAgICAgICdtZXRob2Q9YWxidW0uZ2V0SW5mbycgK1xuICAgICAgICAgICcmYXJ0aXN0PScgKyBhcnRpc3QgK1xuICAgICAgICAgICcmYWxidW09JyArIGFsYnVtICtcbiAgICAgICAgICAnJmFwaWtleT00MjE4ODgwNGJiNDE0NWQ0MmU5Y2ZiZDJlMjYwYzUzYycgK1xuICAgICAgICAgICcmZm9ybWF0PWpzb24nKTtcbiAgICAgIH0sXG4gICAgICAvLyBHZXQgdGhlIHRvcCB0YWdzIGZvciBhbiBhbGJ1bSBvbiBMYXN0LmZtLCBvcmRlcmVkIGJ5IHBvcHVsYXJpdHkuXG4gICAgICBnZXRBbGJ1bVRvcFRhZ3M6IGZ1bmN0aW9uIChhcnRpc3QsIGFsYnVtKSB7XG4gICAgICAgIHJldHVybiAkaHR0cC5wb3N0KCdodHRwOi8vd3MuYXVkaW9zY3JvYmJsZXIuY29tLzIuMC8/JyArXG4gICAgICAgICAgJ21ldGhvZD1hbGJ1bS5nZXR0b3B0YWdzJyArXG4gICAgICAgICAgJyZhbGJ1bT0nICsgYWxidW0gK1xuICAgICAgICAgICcmYXJ0aXN0PScgKyBhcnRpc3QgK1xuICAgICAgICAgICcmYXBpX2tleT00MjE4ODgwNGJiNDE0NWQ0MmU5Y2ZiZDJlMjYwYzUzYycgK1xuICAgICAgICAgICcmZm9ybWF0PWpzb24nKTtcbiAgICAgIH1cbiAgICB9O1xuXG4gIH1dKTtcbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==

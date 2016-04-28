@@ -1,7 +1,0 @@
-{
-  "env": {                           // http://eslint.org/docs/user-guide/configuring.html#specifying-environments
-    "node": true,
-    "protractor": true,
-    "jasmine": true
-  }
-}

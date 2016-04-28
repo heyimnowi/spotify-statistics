@@ -1,0 +1,12 @@
+'use strict';
+
+angular.module('app-bootstrap').factory('trackService', ['$http', function ($http) {
+
+  return {
+    // Get the metadata for a track on Last.fm
+    getTrackInfo: function getTrackInfo(track, artist) {
+      return $http.post('http://ws.audioscrobbler.com/2.0/?' + 'method=track.getInfo' + '&artist=' + artist + '&track=' + track + '&apikey=42188804bb4145d42e9cfbd2e260c53c' + '&format=json');
+    }
+  };
+}]);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9zZXJ2aWNlcy90cmFja1NlcnZpY2UuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxRQUFRLE1BQVIsQ0FBZSxlQUFmLEVBQWdDLE9BQWhDLENBQXdDLGNBQXhDLEVBQXdELENBQ3RELE9BRHNELEVBRXRELFVBQVUsS0FBVixFQUFpQjs7QUFFZixTQUFPOztBQUVMLGtCQUFjLHNCQUFDLEtBQUQsRUFBUSxNQUFSLEVBQW1CO0FBQy9CLGFBQU8sTUFBTSxJQUFOLENBQVcsdUNBQ2hCLHNCQURnQixHQUVoQixVQUZnQixHQUVILE1BRkcsR0FHaEIsU0FIZ0IsR0FHSixLQUhJLEdBSWhCLDBDQUpnQixHQUtoQixjQUxLLENBQVA7QUFNRDtBQVRJLEdBQVA7QUFZRCxDQWhCcUQsQ0FBeEQiLCJmaWxlIjoiYXBwL3NlcnZpY2VzL3RyYWNrU2VydmljZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImFuZ3VsYXIubW9kdWxlKCdhcHAtYm9vdHN0cmFwJykuZmFjdG9yeSgndHJhY2tTZXJ2aWNlJywgW1xuICAnJGh0dHAnLFxuICBmdW5jdGlvbiAoJGh0dHApIHtcblxuICAgIHJldHVybiB7XG4gICAgICAvLyBHZXQgdGhlIG1ldGFkYXRhIGZvciBhIHRyYWNrIG9uIExhc3QuZm1cbiAgICAgIGdldFRyYWNrSW5mbzogKHRyYWNrLCBhcnRpc3QpID0+IHtcbiAgICAgICAgcmV0dXJuICRodHRwLnBvc3QoJ2h0dHA6Ly93cy5hdWRpb3Njcm9iYmxlci5jb20vMi4wLz8nICtcbiAgICAgICAgICAnbWV0aG9kPXRyYWNrLmdldEluZm8nICtcbiAgICAgICAgICAnJmFydGlzdD0nICsgYXJ0aXN0ICtcbiAgICAgICAgICAnJnRyYWNrPScgKyB0cmFjayArXG4gICAgICAgICAgJyZhcGlrZXk9NDIxODg4MDRiYjQxNDVkNDJlOWNmYmQyZTI2MGM1M2MnICtcbiAgICAgICAgICAnJmZvcm1hdD1qc29uJyk7XG4gICAgICB9XG4gICAgfTtcblxuICB9XSk7XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
