@@ -1,0 +1,34 @@
+# npm dependencies
+node_modules
+
+# bower dependencies
+bower_components
+
+# npm log file
+npm-debug.log
+
+# compiled code folder
+build
+
+# aws keys file
+config/aws.js
+
+# config keys
+config/secrets.development.js
+config/secrets.staging.js
+config/secrets.production.js
+
+# mac files
+.DS_Store
+
+# unit tests coverage report
+test/unit/coverage
+
+# unit tests results report
+test/unit/test-results.xml
+
+# protractor test results report
+protractor-results.xml
+
+# deploy cache
+.awspublish*
