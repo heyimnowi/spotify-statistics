@@ -1,14 +1,11 @@
 angular.module('app-bootstrap').controller('topArtistsController', [
-  'userService', '$scope',
-  function (userService, $scope) {
+  'userService', '$scope', '$q',
+  function (userService, $scope, $q) {
 
     const limitTopArtist = 10;
-    const limitTracks = 200;
+    const limitTracks = 50;
     const user = 'lopeznoeliab';
     this.chart = false;
-
-    $scope.title = 'Top';
-    $scope.subtitle = 'Artists';
 
     // Chart data
     this.data = [{
@@ -22,7 +19,8 @@ angular.module('app-bootstrap').controller('topArtistsController', [
         type: 'sunburstChart',
         height: 450,
         color: d3.scale.category10(),
-        duration: 250
+        duration: 250,
+        objectEquality: true
       }
     };
 
@@ -37,6 +35,7 @@ angular.module('app-bootstrap').controller('topArtistsController', [
     };
 
     this.createArtistTracks = (album, track) => {
+      console.log("print track");
       const trackName = track.name;
       const trackIndex = this.checkItem(trackName, album.children);
       // The song doesnt exist
@@ -50,12 +49,10 @@ angular.module('app-bootstrap').controller('topArtistsController', [
         album.children[trackIndex].size++;
       }
       album.size++;
-      // sacar de aca
-      this.chart = true;
     };
 
     this.createArtistAlbums = (artist, artistNameEncoded) => {
-      userService.getArtistTracks(user, artistNameEncoded, limitTracks)
+      return userService.getArtistTracks(user, artistNameEncoded, limitTracks)
         .then((artistTracksResponse) => {
           const artistTracks = artistTracksResponse.data.artisttracks.track;
           angular.forEach(artistTracks, (track) => {
@@ -78,6 +75,7 @@ angular.module('app-bootstrap').controller('topArtistsController', [
 
     // Push new artist to the array
     this.createNewArtist = (topArtistArray) => {
+      const promises = [];
       angular.forEach(topArtistArray, (artist, index) => {
         const newArtist = {
           name: artist.name,
@@ -85,18 +83,23 @@ angular.module('app-bootstrap').controller('topArtistsController', [
           children: []
         };
         this.data[0].children.push(newArtist);
-        this.createArtistAlbums(this.data[0].children[index], this.encode(artist.name));
+        promises.push(this.createArtistAlbums(this.data[0].children[index], this.encode(artist.name)));
+      });
+      $q.all(promises).then((values) => {
+        this.chart = true;
       });
     };
 
     // Get top artists from Last.fm api
-    userService.getTopArtists(user, limitTopArtist)
+    this.getTopArtists = () => {
+      userService.getTopArtists(user, limitTopArtist)
       .then((topArtistsResponse) => {
-        const topArtists = topArtistsResponse.data.topartists.artist;
-        this.createNewArtist(topArtists);
+        this.topArtists = topArtistsResponse.data.topartists.artist;
+        this.createNewArtist(this.topArtists)
+        console.log(this.data);
       });
+    }
+  
+    this.getTopArtists();
 
-    // debugger;
-    console.log(this.data);
-    // this.chart = true;
   }]);
