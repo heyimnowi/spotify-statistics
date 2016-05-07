@@ -11,6 +11,10 @@ html {
   height: 100%;
 }
 
+.center {
+  text-align: center;
+}
+
 // ------------ TEXT  ------------
 
 h1 {
@@ -79,9 +83,9 @@ p {
 
 .back-arrow {
   cursor: pointer;
-  display: block;
-  margin-left: 20px;
-  margin-top: 20px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
 
   img {
     width: 25px;

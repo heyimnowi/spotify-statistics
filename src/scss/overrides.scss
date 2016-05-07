@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,300,700');
+
+// ------------ TEXT  ------------
+
+.nvtooltip {
+  border-radius: 0;
+  border: 2px solid $green;
+  background-color: $white;
+  font-family: 'Dosis', sans-serif;
+  padding: 5px 10px; 
+  
+  span {
+    font-size: 14px; 
+    margin: 0 5px;
+    vertical-align: middle;
+  }
+
+  .data {
+    font-weight: 700; 
+  }
+}
+
+svg.nvd3-svg {
+  margin: 0 auto;
+}
+
+.circle-reference {
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+  vertical-align: middle;
+  display: inline-block;  
+}

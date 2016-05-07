@@ -4,13 +4,14 @@ angular.module('app-bootstrap').factory('albumService', [
 
     return {
       // Get the metadata and tracklist for an album on Last.fm
-      getAlbumInfo: (album, artist) => {
+      getAlbumInfo: (artist, album, user) => {
         return $http.post('http://ws.audioscrobbler.com/2.0/?' +
-          'method=album.getInfo' +
+          'method=album.getinfo' +
+          '&api_key=42188804bb4145d42e9cfbd2e260c53c' +
           '&artist=' + artist +
           '&album=' + album +
-          '&apikey=42188804bb4145d42e9cfbd2e260c53c' +
-          '&format=json');
+          '&format=json' +
+          '&user=lopeznoeliab');
       },
       // Get the top tags for an album on Last.fm, ordered by popularity.
       getAlbumTopTags: function (artist, album) {

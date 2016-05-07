@@ -4,7 +4,8 @@ angular.module('app-bootstrap').controller('minutesPerDayController', [
 
     const user = 'lopeznoeliab';
     const limitTracks = 200;
-    this.tracks = [];
+    const tracksInfo = [];
+    let currentPage = 1;
     this.data = [];
 
     this.checkItem = (itemName, itemsArray) => {
@@ -13,51 +14,46 @@ angular.module('app-bootstrap').controller('minutesPerDayController', [
       })
     };
 
-    this.addNewTrack = (dateIndex, track) => {
-      debugger;
-      let trackIndex = this.checkItem(track.name, this.tracks);
-      if (trackIndex === -1) {
-        trackService.getTrackInfo(track.name, track.artist.name)
-          .then((trackInfoResponse) => {
-            const newTrack = {
-              name: track.name,
-              duration: 0
-            }
-            this.tracks.push(newTrack);
-            trackIndex = this.tracks.length - 1;
-          });
-      }
-      this.data[dateIndex].minutes += this.tracks[trackIndex].duration;
+    this.encode = (string) => {
+      return _.replace(_.replace(string, '&', '%26'), '+', '%252B');
     };
-
-    this.getTracks = (page) => {
-      userService.getRecentTracks(page, limitTracks, user)
-        .then((recentTracksResponse) => {
-          const arrayTracks = recentTracksResponse.data.recenttracks.track;
-          angular.forEach(arrayTracks, (track) => {
-            const date = track.date['#text'].split(',')[0];
-            let dateIndex = this.checkItem(date, this.data);
-            debugger;
-            if (dateIndex === -1) {
-              const newDate = {
-                name: date,
-                minutes: 0
-              };
-              this.data.push(newDate);
-              dateIndex = this.data.length - 1;
-            }
-            this.addNewTrack(dateIndex, track);
-          });
-          if (recentTracksResponse.data.recenttracks['@attr'].totalPages < page) {
-            this.getTracks(page + 1);
+        
+    this.addNewTrack = (dateIndex, track) => {
+      trackService.getTrackInfo(track.name, this.encode(track.artist['#text']))
+        .then((trackInfoResponse) => {
+          if (!angular.isUndefined(trackInfoResponse.data.track)){
+            const duration = trackInfoResponse.data.track.duration / 60000;
+            this.data[dateIndex].minutes += duration;
           }
         });
     };
 
-    trackService.getTrackInfo('Mark my words', 'Justin Bieber')
-      .then((trackInfoResponse) => {
-        console.log(trackInfoResponse);
-      });
-    this.getTracks(1);
+    this.getTracks = () => {
+      userService.getRecentTracks(currentPage, limitTracks, user)
+        .then((recentTracksResponse) => {
+          const arrayTracks = recentTracksResponse.data.recenttracks.track;
+          angular.forEach(arrayTracks, (track) => {
+            if (angular.isUndefined(track['@attr'])) {
+              const date = track.date['#text'].split(',')[0];
+              let dateIndex = this.checkItem(date, this.data);
+              if (dateIndex === -1) {
+                const newDate = {
+                  name: date,
+                  minutes: 0
+                };
+                this.data.push(newDate);
+                dateIndex = this.data.length - 1;
+              }
+              this.addNewTrack(dateIndex, track);
+            }
+          });
+          if (recentTracksResponse.data.recenttracks['@attr'].totalPages > currentPage) {
+            //console.log(this.data);
+            this.getTracks(++currentPage);
+          }
+        });
+    };
+
+    this.getTracks();
 
   }]);
