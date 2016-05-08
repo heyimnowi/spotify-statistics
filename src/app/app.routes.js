@@ -47,6 +47,16 @@ angular.module('app-bootstrap').config([
           }
         }
       })
+      .state('centered.similar-artist', {
+        url: '/similar-artist',
+        views: {
+          content: {
+            templateUrl: '../app/components/centered/similar_artist/similar_artist.html',
+            controller: 'similarArtistController',
+            controllerAs: 'similarArtistCtrl'
+          }
+        }
+      })
       .state('home', {
         url: '/home',
         views: {

@@ -4,11 +4,12 @@ angular.module('app-bootstrap').factory('artistService', [
 
     return {
       // Get the metadata for an artist. Includes biography
-      getArtistInfo: (artistName) => {
+      getArtistInfo: (artistName, user) => {
         return $http.post('http://ws.audioscrobbler.com/2.0/?' +
-          'method=artist.getInfo' +
+          'method=artist.getinfo' +
           '&artist=' + artistName +
-          '&apikey=42188804bb4145d42e9cfbd2e260c53c' +
+          '&user=' + user +
+          '&api_key=42188804bb4145d42e9cfbd2e260c53c' + 
           '&format=json');
       },
       // Get the top tags for an artist on Last.fm, ordered by popularity.
@@ -18,7 +19,15 @@ angular.module('app-bootstrap').factory('artistService', [
           '&artist=' + artist +
           '&api_key=42188804bb4145d42e9cfbd2e260c53c' +
           '&format=json');
-      }
+      },
+      getSimilar: (artist, limit) => {
+        return $http.post('http://ws.audioscrobbler.com/2.0/?' +
+          'method=artist.getsimilar' +
+          '&artist=' + artist +
+          '&limit=' + limit +
+          '&api_key=42188804bb4145d42e9cfbd2e260c53c' +
+          '&format=json');
+      },
     };
 
   }]);
