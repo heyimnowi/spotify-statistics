@@ -2,18 +2,18 @@ angular.module('app-bootstrap').controller('similarArtistController', [
   'userService', 'artistService', '$q',
   function (userService, artistService, $q) {
 
-    const limitTopArtist = 150;
+    const limitTopArtist = 170;
     const user = 'lopeznoeliab';
-    const limitSimilar = 15;
+    const limitSimilar = 20;
 
     // Chart data
     this.data = {
-      'nodes': [],
-      'links': []
+      nodes: [],
+      links: []
     };
 
     const tooltip = d3.select('#container')
-                      .append('div') 
+                      .append('div')
                       .attr('class', 'tooltip-force');
 
     const width = 900;
@@ -39,18 +39,22 @@ angular.module('app-bootstrap').controller('similarArtistController', [
           const promises = [];
           const similarArtistArray = similarArtistResponse.data.similarartists.artist;
           angular.forEach(similarArtistArray, (similar) => {
-            let artistSimilarIndex = this.checkItem(this.decode(similar.name), this.data.nodes);
-            if (artistSimilarIndex !== -1){
+            const artistSimilarIndex = this.checkItem(this.decode(similar.name), this.data.nodes);
+            if (artistSimilarIndex !== -1) {
               const newLink = {
                 source: index,
                 target: artistSimilarIndex,
                 value: 1
               };
+              this.data.nodes[artistSimilarIndex].links++;
+              this.data.nodes[index].links++;
+              this.data.nodes[index].similars.push(similar.name);
+              this.data.nodes[artistSimilarIndex].similars.push(artist.name);
               this.data.links.push(newLink);
             }
           });
           $q.all(promises).then(() => {
-            // console.log("listo")
+            // console.log('listo')
           });
         });
     };
@@ -61,12 +65,16 @@ angular.module('app-bootstrap').controller('similarArtistController', [
       angular.forEach(topArtistArray, (artist, index) => {
         const newArtist = {
           name: this.decode(artist.name),
-          playcount: artist.playcount
+          playcount: artist.playcount,
+          links: 0,
+          similars: []
         };
         this.data.nodes.push(newArtist);
         promises.push(this.getSimilar(newArtist, this.encode(artist.name), index));
       });
       $q.all(promises).then(() => {
+        this.data.nodes = this.data.nodes.sort(function (a,b) {return d3.descending(a.links, b.links); });
+        console.log(this.data);
 
         const minPlaycount = d3.min(this.data.nodes,
           function(d) {
@@ -83,12 +91,12 @@ angular.module('app-bootstrap').controller('similarArtistController', [
                                   .domain([minPlaycount, maxPlaycount])
                                   .range([0, 100]);
 
-        let force = d3.layout.force()
+        const force = d3.layout.force()
             .charge(-120)
             .linkDistance(30)
             .size([width, height]);
 
-        let svg = d3.select('#container').append('svg')
+        const svg = d3.select('#container').append('svg')
             .attr('width', width)
             .attr('height', height);
 
@@ -97,53 +105,69 @@ angular.module('app-bootstrap').controller('similarArtistController', [
             .links(this.data.links)
             .start();
 
-        let link = svg.selectAll('.link')
+        const link = svg.selectAll('.link')
             .data(this.data.links)
             .enter().append('line')
             .attr('class', 'link')
-            .style('stroke-width', function(d) { return Math.sqrt(d.value); });
+            .style('stroke-width', function(d) {
+              return Math.sqrt(d.value);
+            });
 
-        let node = svg.selectAll('.node')
+        const node = svg.selectAll('.node')
             .data(this.data.nodes)
             .enter().append('circle')
             .attr('class', 'node')
             .attr('r', 5)
-            .style('fill', function(d) { return d3.rgb('hsl(316,' + colorScale(d.playcount) + '%, 45%)'); })
-            .on('mouseover', function(d){
-                  console.log(d);
-                  var mouseVal = d3.mouse(this);
-                  tooltip.style("display","none");
-                  tooltip
-                    .html('<span>' + d.name + '</span>')
-                    .style('left', (d3.event.pageX+12) + 'px')
-                    .style('top', (d3.event.pageY-10) + 'px')
-                    .style('opacity', 1)
-                    .style('display','block')
-                    .style('position', 'absolute');
-                  })
-            .on('mouseout', function(d) { 
-                  tooltip
-                    .html('')
-                    .style('display', 'none') })
+            .style('fill', function(d) {
+              return d3.rgb('hsl(316,' + colorScale(d.playcount) + '%, 45%)');
+            })
+            .on('mouseover', function(d) {
+              tooltip.style('display', 'none');
+              tooltip
+                .html('<span>' + d.name + '</span>')
+                .style('left', d3.event.pageX + 12 + 'px')
+                .style('top', d3.event.pageY - 10 + 'px')
+                .style('opacity', 1)
+                .style('display', 'block')
+                .style('position', 'absolute');
+            })
+            .on('mouseout', function() {
+              tooltip
+                .html('')
+                .style('display', 'none')
+            })
             .call(force.drag);
 
         node.append('title')
-            .text(function(d) { return d.name; });
+            .text(function(d) {
+              return d.name;
+            });
 
         force.on('tick', function() {
-          link.attr('x1', function(d) { return d.source.x; })
-              .attr('y1', function(d) { return d.source.y; })
-              .attr('x2', function(d) { return d.target.x; })
-              .attr('y2', function(d) { return d.target.y; });
+          link.attr('x1', function(d) {
+            return d.source.x;
+          })
+          .attr('y1', function(d) {
+            return d.source.y;
+          })
+          .attr('x2', function(d) {
+            return d.target.x;
+          })
+          .attr('y2', function(d) {
+            return d.target.y;
+          });
 
-          node.attr('cx', function(d) { return d.x; })
-              .attr('cy', function(d) { return d.y; });
+          node
+            .attr('cx', function(d) {
+              return d.x;
+            })
+            .attr('cy', function(d) {
+              return d.y;
+            });
         });
 
       });
     };
-
-
 
     // Get top artists from Last.fm api
     this.getTopArtists = () => {
