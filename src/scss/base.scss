@@ -140,6 +140,21 @@ p {
   }
 }
 
+.detail-wrapper {
+  width: 33%;
+  display: inline-block;
+  vertical-align: top;   
+  text-align: center;
+  
+  img {
+    height: 100px; 
+  }
+}
+
+.details {
+  margin-top: 60px; 
+}
+
 // ------------ OTHERS  ------------
 
 .bar {

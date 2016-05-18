@@ -61,7 +61,9 @@ angular.module('app-bootstrap').config([
         url: '/home',
         views: {
           main: {
-            templateUrl: '../app/components/home/home.html'
+            templateUrl: '../app/components/home/home.html',
+            controller: 'HomeController',
+            controllerAs: 'homeCtrl'
           }
         }
       });

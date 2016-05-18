@@ -14,6 +14,34 @@
 .exercise-section
 	.exercise-title
 		h1
+			| GENERAL
+		h1 
+			| DETAILS
+		.bar
+	.details
+		.detail-wrapper
+			img(src='assets/tracks.svg')
+			h1
+				| {{ homeCtrl.tracks }}
+			h4
+				| TRACKS
+		.detail-wrapper
+			img(src='assets/artists.svg')
+			h1
+				| {{ homeCtrl.artist }}
+			h4
+				| ARTISTS
+		.detail-wrapper
+			img(src='assets/sound-bars.svg')
+			h1
+				| {{ homeCtrl.average }}
+			h4
+				| AVERAGE
+.exercise-section
+	.exercise-title
+		h1
+			| #1
+		h1
 			| TOP
 		h1 
 			| ARTISTS
@@ -22,20 +50,21 @@
 		| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac augue eu erat cursus elementum id eu risus. Praesent dignissim ultricies libero sed feugiat. Aenean laoreet volutpat urna non bibendum. Praesent justo nisi, faucibus a vehicula sed, viverra at dolor. Aliquam eu gravida arcu. Morbi vestibulum faucibus elit, sed aliquam nunc aliquam et. Duis sed diam interdum, hendrerit est eu, viverra dui. Vivamus porta risus vel odio aliquet dapibus non non nisi.
 	a.link.green-link(ui-sref='centered.top-artists')
 		| View more
-
+//- .exercise-section
+//- 	.exercise-title
+//- 		h1
+//- 			| MINUTES
+//- 		h1 
+//- 			| PER DAY
+//- 		.bar
+//- 	p 
+//- 		| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac augue eu erat cursus elementum id eu risus. Praesent dignissim ultricies libero sed feugiat. Aenean laoreet volutpat urna non bibendum. Praesent justo nisi, faucibus a vehicula sed, viverra at dolor. Aliquam eu gravida arcu. Morbi vestibulum faucibus elit, sed aliquam nunc aliquam et. Duis sed diam interdum, hendrerit est eu, viverra dui. Vivamus porta risus vel odio aliquet dapibus non non nisi.
+//- 	a.link.green-link(ui-sref='centered.minutes-per-day')
+//- 		| View more
 .exercise-section
 	.exercise-title
 		h1
-			| MINUTES
-		h1 
-			| PER DAY
-		.bar
-	p 
-		| Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac augue eu erat cursus elementum id eu risus. Praesent dignissim ultricies libero sed feugiat. Aenean laoreet volutpat urna non bibendum. Praesent justo nisi, faucibus a vehicula sed, viverra at dolor. Aliquam eu gravida arcu. Morbi vestibulum faucibus elit, sed aliquam nunc aliquam et. Duis sed diam interdum, hendrerit est eu, viverra dui. Vivamus porta risus vel odio aliquet dapibus non non nisi.
-	a.link.green-link(ui-sref='centered.minutes-per-day')
-		| View more
-.exercise-section
-	.exercise-title
+			| #2
 		h1
 			| TOP
 		h1 
@@ -48,6 +77,8 @@
 
 .exercise-section
 	.exercise-title
+		h1
+			| #3
 		h1
 			| SIMILAR
 		h1 

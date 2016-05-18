@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="612px" height="482px" viewBox="0 0 612 482" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<svg width="100px" height="79px" viewBox="0 0 100 79" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
     <title>Shape</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="d6339bfa165891b7ebf1e0a7f50644e2" sketch:type="MSLayerGroup" fill="#FF2E63">
-            <g id="Rectangle_46_copy_9" sketch:type="MSShapeGroup">
-                <path d="M612,219.259 L83.467,219.259 L272.208,31.173 L241.356,0.452 L30.831,210.257 L0,241 L241.356,481.548 L272.187,450.827 L83.467,262.72 L611.978,262.72 L611.978,219.26 L612,219.26 L612,219.259 L612,219.259 Z M61.661,240.979 L66.949,235.713 L66.949,246.245 L61.661,240.979 L61.661,240.979 Z" id="Shape"></path>
+        <g id="back_arrow" sketch:type="MSLayerGroup" fill="#1ED760">
+            <g id="Page-1" sketch:type="MSShapeGroup">
+                <g id="d6339bfa165891b7ebf1e0a7f50644e2">
+                    <g id="Rectangle_46_copy_9">
+                        <path d="M100,35.826634 L13.6383987,35.826634 L44.4784314,5.09362745 L39.4372549,0.0738562092 L5.0377451,34.355719 L0,39.379085 L39.4372549,78.6843137 L44.475,73.6645425 L13.6383987,42.9281046 L99.9964052,42.9281046 L99.9964052,35.8267974 L100,35.8267974 L100,35.826634 L100,35.826634 Z M10.0753268,39.3756536 L10.9393791,38.5151961 L10.9393791,40.2361111 L10.0753268,39.3756536 L10.0753268,39.3756536 Z" id="Shape"></path>
+                    </g>
+                </g>
             </g>
         </g>
     </g>

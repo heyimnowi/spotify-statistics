@@ -22,6 +22,7 @@
     "bootstrap": "~3.3.6",
     "restangular": "~1.5.1",
     "angular-mocks": "~1.4.8",
-    "angular-nvd3": "^1.0.6"
+    "angular-nvd3": "^1.0.6",
+    "countup-angularjs-directive": "*"
   }
 }
