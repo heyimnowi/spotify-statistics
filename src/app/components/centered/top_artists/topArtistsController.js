@@ -22,8 +22,8 @@ angular.module('app-bootstrap').controller('topArtistsController', [
     this.options = {
       chart: {
         type: 'sunburstChart',
-        width: 450,
-        height: 450,
+        width: 350,
+        height: 350,
         duration: 250,
         tooltip: {
           contentGenerator: function(d) {

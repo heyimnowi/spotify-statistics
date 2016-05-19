@@ -4,7 +4,7 @@ angular.module('app-bootstrap').factory('albumService', [
 
     return {
       // Get the metadata and tracklist for an album on Last.fm
-      getAlbumInfo: (artist, album, user) => {
+      getAlbumInfo: (artist, album) => {
         return $http.post('http://ws.audioscrobbler.com/2.0/?' +
           'method=album.getinfo' +
           '&api_key=42188804bb4145d42e9cfbd2e260c53c' +

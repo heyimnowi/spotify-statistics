@@ -1,12 +1,12 @@
 angular.module('app-bootstrap').controller('HomeController', [
-  'userService', '$scope'
-  function (userService, $scope) {
+  'userService',
+  function (userService) {
 
     this.average = 0;
     this.tracks = 0;
     this.average = 47;
+    this.url = '';
     const user = 'lopeznoeliab';
-    $scope.url = '';
 
     userService.getRecentTracks(1, 1, user)
       .then((recentTracksResponse) => {

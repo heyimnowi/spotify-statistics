@@ -9,7 +9,7 @@ angular.module('app-bootstrap').factory('artistService', [
           'method=artist.getinfo' +
           '&artist=' + artistName +
           '&user=' + user +
-          '&api_key=42188804bb4145d42e9cfbd2e260c53c' + 
+          '&api_key=42188804bb4145d42e9cfbd2e260c53c' +
           '&format=json');
       },
       // Get the top tags for an artist on Last.fm, ordered by popularity.
@@ -27,7 +27,7 @@ angular.module('app-bootstrap').factory('artistService', [
           '&limit=' + limit +
           '&api_key=42188804bb4145d42e9cfbd2e260c53c' +
           '&format=json');
-      },
+      }
     };
 
   }]);

@@ -4,7 +4,7 @@ angular.module('app-bootstrap').controller('minutesPerDayController', [
 
     const user = 'lopeznoeliab';
     const limitTracks = 200;
-    const tracksInfo = [];
+    // const tracksInfo = [];
     let currentPage = 1;
     this.data = [];
 
@@ -17,11 +17,11 @@ angular.module('app-bootstrap').controller('minutesPerDayController', [
     this.encode = (string) => {
       return _.replace(_.replace(string, '&', '%26'), '+', '%252B');
     };
-        
+
     this.addNewTrack = (dateIndex, track) => {
       trackService.getTrackInfo(track.name, this.encode(track.artist['#text']))
         .then((trackInfoResponse) => {
-          if (!angular.isUndefined(trackInfoResponse.data.track)){
+          if(angular.isDefined(trackInfoResponse.data.track)){
             const duration = trackInfoResponse.data.track.duration / 60000;
             this.data[dateIndex].minutes += duration;
           }
@@ -48,7 +48,6 @@ angular.module('app-bootstrap').controller('minutesPerDayController', [
             }
           });
           if (recentTracksResponse.data.recenttracks['@attr'].totalPages > currentPage) {
-            //console.log(this.data);
             this.getTracks(++currentPage);
           }
         });
