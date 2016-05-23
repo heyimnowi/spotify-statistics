@@ -4,11 +4,11 @@ angular.module('app-bootstrap').factory('userService', [
 
     return {
       // Get the top tracks listened to by a user.
-      getTopTracks: function (page, user) {
+      getTopTracks: function (limit, user) {
         return $http.post('http://ws.audioscrobbler.com/2.0/?' +
           'method=user.gettoptracks' +
           '&user=' + user +
-          '&page=' + page +
+          '&limit=' + limit +
           '&api_key=42188804bb4145d42e9cfbd2e260c53c' +
           '&format=json');
       },

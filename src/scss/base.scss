@@ -234,3 +234,28 @@ p {
   min-width: 100px;
   padding: 5px 10px;
 }
+
+/* TOP TRACKS */
+
+.tooltip {
+  border: 2px solid $green;
+  display: none;
+  background: $white;
+  padding: 5px 10px;
+  margin: 0;
+}
+
+.tooltip p {
+  display: block;
+  margin: 0;
+  color: $black;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.tooltip p span {
+  font-weight: 400;
+  margin-right: 5px;
+  color: $black;
+  font-size: 14px;
+}
