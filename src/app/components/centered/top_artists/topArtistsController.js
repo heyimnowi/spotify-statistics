@@ -7,6 +7,8 @@ angular.module('app-bootstrap').controller('topArtistsController', [
     const user = 'lopeznoeliab';
     let maxArtist = 0;
     let minArtist = 0;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
     this.chart = false;
 
@@ -22,8 +24,8 @@ angular.module('app-bootstrap').controller('topArtistsController', [
     this.options = {
       chart: {
         type: 'sunburstChart',
-        width: 350,
-        height: 350,
+        width: width,
+        height: height,
         duration: 250,
         tooltip: {
           contentGenerator: function(d) {
