@@ -1,10 +1,12 @@
 angular.module('app-bootstrap').controller('similarArtistController', [
-  'userService', 'artistService', '$q',
-  function (userService, artistService, $q) {
+  'userService', 'artistService', '$q', '$rootScope',
+  function (userService, artistService, $q, $rootScope) {
 
-    const limitTopArtist = 150;
+    const limitTopArtist = 120;
     const user = 'lopeznoeliab';
     const limitSimilar = 5;
+
+    $rootScope.showSpinner = true;
 
     // Chart data
     this.data = {
@@ -13,11 +15,11 @@ angular.module('app-bootstrap').controller('similarArtistController', [
     };
 
     const tooltip = d3.select('#container')
-                      .append('div') 
+                      .append('div')
                       .attr('class', 'tooltip-force');
 
-    const width = 900;
-    const height = 900;
+    const width = 700;
+    const height = 700;
 
     this.decode = (string) => {
       return _.replace(_.replace(string, '%26', '&'), '%252B', '+');
@@ -50,7 +52,6 @@ angular.module('app-bootstrap').controller('similarArtistController', [
             }
           });
           $q.all(promises).then(() => {
-            // console.log("listo")
           });
         });
     };
@@ -110,7 +111,6 @@ angular.module('app-bootstrap').controller('similarArtistController', [
             .attr('r', 5)
             .style('fill', function(d) { return d3.rgb('hsl(316,' + colorScale(d.playcount) + '%, 45%)'); })
             .on('mouseover', function(d){
-                  console.log(d);
                   var mouseVal = d3.mouse(this);
                   tooltip.style("display","none");
                   tooltip
@@ -121,7 +121,7 @@ angular.module('app-bootstrap').controller('similarArtistController', [
                     .style('display','block')
                     .style('position', 'absolute');
                   })
-            .on('mouseout', function(d) { 
+            .on('mouseout', function(d) {
                   tooltip
                     .html('')
                     .style('display', 'none') })
@@ -139,6 +139,8 @@ angular.module('app-bootstrap').controller('similarArtistController', [
           node.attr('cx', function(d) { return d.x; })
               .attr('cy', function(d) { return d.y; });
         });
+
+        $rootScope.showSpinner = false;
 
       });
     };

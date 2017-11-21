@@ -1,31 +1,32 @@
 angular.module('app-bootstrap').controller('topTracksController', [
-  'userService',
-  function (userService) {
+  'userService', '$rootScope',
+  function (userService, $rootScope) {
 
     const data = [];
-    const limitTracks = 7;
+    const limitTracks = 20;
 
     const width = 300;
     const height = 300;
     const a = width / 2;
     const b = height / 2;
+    $rootScope.showSpinner = true;
 
     const scale = d3.scale.linear()
                     .domain([1, 25])
                     .range([1, 300]);
 
     const color = d3.scale.quantile()
-                  .domain([0, 5, 10, 15, 20, 25])
+                  .domain([0, 20, 40, 60, 80, 100])
                   .range(["#CBFFCE", "#90E0AB", "#0FC1A1", "#106EE8", "#07588A", "#0C056D"]);
 
     const radius = Math.min(width-100,height-100)/2;
 
-    const arc = d3.svg.arc()  
+    const arc = d3.svg.arc()
                 .outerRadius(radius -230)
                 .innerRadius(radius - 50)
                 .cornerRadius(20);
 
-    const arcOver = d3.svg.arc()  
+    const arcOver = d3.svg.arc()
                     .outerRadius(radius +50)
                     .innerRadius(0);
 
@@ -39,13 +40,12 @@ angular.module('app-bootstrap').controller('topTracksController', [
                 .attr("transform","translate(150,75)");
 
     const div = d3.select("body")
-            .append("div") 
+            .append("div")
             .attr("class", "tooltip-1");
 
     userService.getTopTracks(limitTracks, 'lopeznoeliab')
       .then((response) => {
         angular.forEach(response.data.toptracks.track, (track, index) => {
-          //console.log(track);
           const newTrack = {
             name: track.name,
             artist: track.artist.name,
@@ -54,10 +54,9 @@ angular.module('app-bootstrap').controller('topTracksController', [
           };
           data.push(newTrack);
         });
-        console.log(data);
 
         const div = d3.select("body")
-                .append("div") 
+                .append("div")
                 .attr("class", "tooltip");
 
         const pie = d3.layout.pie()
@@ -89,7 +88,8 @@ angular.module('app-bootstrap').controller('topTracksController', [
           .attr("d",arc)
           .style("fill",function(d){ return color(d.data.playcount);});
 
+        $rootScope.showSpinner = false;
+
       });
 
   }]);
-

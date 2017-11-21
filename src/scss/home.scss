@@ -1,15 +1,15 @@
 .toy-background {
   background-image: url('https://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/2/12/1423759757798/6a8c828c-41ef-43aa-bb73-75d86aee1c00-2060x1236.jpeg');
-  //background-color: $green;
   background-size: cover;
   height: 100%;
   margin: 0;
+  background-position: center;
 }
 
 .green-overlay {
   background-color: $green;
   height: 100%;
-  opacity: 0.7;
+  opacity: .7;
   position: absolute;
   width: 100%;
 }
@@ -18,7 +18,7 @@
   background-color: $white;
   left: 50%;
   max-width: 80%;
-  opacity: 0.85;
+  opacity: .85;
   padding: 50px;
   position: absolute;
   text-align: center;
@@ -47,7 +47,6 @@
 }
 
 .exercise-section {
-  height: 100%;
   padding: 30px 50px;
   text-align: left;
 
@@ -58,7 +57,7 @@
   }
 
   @media (max-width: 992px) {
-    height: auto; 
+    height: auto;
   }
 }
 

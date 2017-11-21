@@ -1,0 +1,113 @@
+.spinner {
+  border-radius: 100%;
+  bottom: 0;
+  height: 50px;
+  left: 0;
+  margin: auto;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+}
+
+.model-2 .spinner {
+  animation: rotate 1.3s linear 0s infinite, color-bubble 3s linear 0s infinite;
+  border: 1px solid;
+}
+
+.model-2 .spinner:after {
+  animation: color-change 3s linear 0s infinite;
+  background: $white;
+  border-radius: 100%;
+  content: '';
+  height: 15px;
+  left: -5px;
+  position: absolute;
+  top: 18px;
+  width: 15px;
+}
+
+@keyframes spinner-bubble {
+  from {
+    height: 10px;
+    opacity: .8;
+    width: 10px;
+  }
+  to {
+    height: 50px;
+    opacity: 0;
+    width: 50px;
+  }
+}
+
+@keyframes color-bubble {
+  0% {
+    color: $pink;
+  }
+
+  33% {
+    color: $purple;
+  }
+
+  66% {
+    color: $turquoise;
+  }
+
+  100% {
+    color: $green;
+  }
+}
+
+@keyframes color-change {
+  0% {
+    background: $pink;
+  }
+
+  33% {
+    background: $purple;
+  }
+
+  66% {
+    background: $turquoise;
+  }
+
+  100% {
+    background: $green;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateRct {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+@keyframes size {
+  from {
+    height: 70px;
+    width: 70px;
+  }
+  to {
+    height: 30px;
+    width: 30px;
+  }
+}

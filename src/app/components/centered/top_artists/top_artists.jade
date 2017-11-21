@@ -1,3 +1,9 @@
-//iframe#spotify-player(src="https://embed.spotify.com/?uri=spotify:track:5PsUB0ISfQxRLhF5DmI5Ks&theme=white" width="450" frameborder="0" allowtransparency="true" style="margin-top: 20px; opacity: 0")
+.references(ng-show='topArtistsCtrl.chart')
+	#h.channel
+		p
+			| Lower
+		canvas(width="500", height="1")
+		p
+			| Higher
 div(ng-if='topArtistsCtrl.chart')
 	nvd3.with-3d-shadow.with-transitions(options='topArtistsCtrl.options' data='topArtistsCtrl.data')

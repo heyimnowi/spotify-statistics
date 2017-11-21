@@ -1,261 +1,284 @@
-@import url('https://fonts.googleapis.com/css?family=Dosis:400,300,700');
+@import url( 'https://fonts.googleapis.com/css?family=Dosis:400,300,700');
 
 body,
 html {
-  background-color: $white;
-  font-family: 'Dosis', sans-serif;
-  height: 100%;
+    background-color: $white;
+    font-family: 'Dosis', sans-serif;
+    height: 100%;
 }
 
 .main {
-  height: 100%;
+    height: 100%;
 }
 
 .center {
-  padding-top: 60px;
-  text-align: center;
+    padding-top: 60px;
+    text-align: center;
 }
 
 .link {
-  fill: none;
-  stroke: $black;
-  stroke-opacity: 0.4;
+    fill: none;
+    stroke: $black;
+    stroke-opacity: 0.4;
 }
 
+.references {
+    .axis line,
+    .axis path {
+        fill: none;
+        stroke: $black;
+        shape-rendering: crispEdges;
+    }
+
+    .axis text {
+        font: 10px sans-serif;
+    }
+
+    #l .tick:last-of-type text,
+    #s .tick:last-of-type text {
+        display: none;
+    }
+
+    .channel canvas {
+        width: 500px;
+        height: 30px;
+
+      @media (max-width: 768px) {
+        width: 260px;
+      }
+    }
+}
 // ------------ TEXT  ------------
-
 h1 {
-  font-family: 'Dosis', sans-serif;
-  font-size: 60px;
-  font-weight: 300;
-  margin-bottom: 20px;
-
-  @media (max-width: 992px) {
-    font-size: 25px;
-  }
+    font-family: 'Dosis', sans-serif;
+    font-size: 60px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    @media (max-width: 992px) {
+        font-size: 25px;
+    }
 }
 
 .title {
-  margin-top: 70px;
+    margin-top: 70px;
 }
 
 h2 {
-  font-size: 25px;
-  font-weight: 300;
-  margin-bottom: 30px;
-
-  @media (max-width: 992px) {
-    font-size: 16px;
-  }
+    font-size: 25px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    @media (max-width: 992px) {
+        font-size: 16px;
+    }
 }
 
 p {
-  font-size: 16px;
-  line-height: 30px;
-
-  @media (max-width: 992px) {
-    font-size: 12px;
-    line-height: 15px;
-  }
+    font-size: 16px;
+    line-height: 30px;
+    @media (max-width: 992px) {
+        font-size: 12px;
+        line-height: 15px;
+    }
 }
 
 .practice-wrapper {
-  text-align: center;
+    text-align: center;
 }
-
 // ------------ LINKS  ------------
-
 .link {
-  cursor: pointer;
-  font-weight: 700;
+    cursor: pointer;
+    font-weight: 700;
 
-  &:focus,
-  &:hover {
-    text-decoration: none;
-  }
-
-  @media (max-width: 992px) {
-    font-size: 16px;
-  }
+    &:focus,
+    &:hover {
+        text-decoration: none;
+    }
+    @media (max-width: 992px) {
+        font-size: 16px;
+    }
 }
 
 .green-link {
-  color: $green;
+    color: $green;
 
-  &:focus,
-  &:hover {
-    color: $pink;
-  }
+    &:focus,
+    &:hover {
+        color: $pink;
+    }
 }
 
 .back-arrow {
-  cursor: pointer;
-  left: 20px;
-  position: absolute;
-  top: 20px;
+    cursor: pointer;
+    left: 20px;
+    position: absolute;
+    top: 20px;
 
-  img {
-    width: 25px;
-  }
+    img {
+        width: 25px;
+    }
+}
+// ------------ HOME ------------
+.main-container {
+    font-weight: 400;
+    padding-left: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    h1,
+    h2,
+    h3 {
+        font-weight: 300;
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 65px;
+        font-weight: 400;
+    }
+
+    h2 {
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+
+        a {
+            color: $black;
+            margin-left: 5px;
+            text-decoration: none;
+
+            &:hover {
+                color: $pink;
+                cursor: pointer;
+                font-weight: 700;
+            }
+        }
+    }
 }
 
-// ------------ HOME ------------
+.channel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
-.main-container {
-  font-weight: 400;
-  padding-left: 20px;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-
-  h1,
-  h2,
-  h3 {
-    font-weight: 300;
-    margin: 0;
+  canvas {
+    margin: 0 10px;
   }
 
-  h1 {
-    font-size: 65px;
-    font-weight: 400;
-  }
-
-  h2 {
-    font-size: 40px;
-    margin-bottom: 40px;
-  }
-
-  h3 {
-    font-size: 20px;
-    margin-bottom: 5px;
-
-    a {
-      color: $black;
-      margin-left: 5px;
-      text-decoration: none;
-
-      &:hover {
-        color: $pink;
-        cursor: pointer;
-        font-weight: 700;
-      }
-    }
+  p {
+    margin-bottom: 0;
   }
 }
 
 .detail-wrapper {
-  display: inline-block;
-  text-align: left;
-  vertical-align: top;
-  width: 33%;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    width: 33%;
 
-  img {
-    height: 100px;
-  }
-
-  @media (max-width: 768px) {
-    display: block;
-    margin: 40px 0;
-    width: 100%;  
-  }
+    img {
+        height: 100px;
+    }
+    @media (max-width: 768px) {
+        display: block;
+        margin: 40px 0;
+        width: 100%;
+    }
 }
 
 .details {
-  margin-top: 60px;
+    margin-top: 60px;
 }
-
 // ------------ OTHERS  ------------
-
 .bar {
-  background-color: $green;
-  height: 2px;
-  margin: 0 auto;
-  width: 200px;
+    background-color: $green;
+    height: 2px;
+    margin: 0 auto;
+    width: 200px;
 }
-
 // ------------ EXERCISES ------------
-
 .exercise,
 .exercises {
-  text-align: center;
+    text-align: center;
 
-  h2 {
-    margin-bottom: 70px;
-  }
+    h2 {
+        margin-bottom: 70px;
+    }
 }
 
 .exercise-1 {
-  p {
-    display: inline-block;
-    margin-right: 10px;
-  }
+    p {
+        display: inline-block;
+        margin-right: 10px;
+    }
 }
 
 .rect-reference {
-  display: inline-block;
-  height: 20px;
-  margin-right: 5px;
-  vertical-align: middle;
-  width: 20px;
+    display: inline-block;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 20px;
 }
 
 .reference {
-  display: inline-block;
-  margin-right: 25px;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  span {
     display: inline-block;
-    vertical-align: middle;
-  }
+    margin-right: 25px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    span {
+        display: inline-block;
+        vertical-align: middle;
+    }
 }
 
 .rect-agree {
-  background-color: $green;
+    background-color: $green;
 }
 
 .rect-neutral {
-  background-color: $grey;
+    background-color: $grey;
 }
 
 .rect-disagree {
-  background-color: $orange;
+    background-color: $orange;
 }
-
 // ------------ FORCE ------------
-
 .tooltip-force {
-  background: $white;
-  border: 2px solid $green;
-  display: none;
-  min-width: 100px;
-  padding: 5px 10px;
+    background: $white;
+    border: 2px solid $green;
+    display: none;
+    min-width: 100px;
+    padding: 5px 10px;
 }
-
 /* TOP TRACKS */
-
 .tooltip {
-  border: 2px solid $green;
-  display: none;
-  background: $white;
-  padding: 5px 10px;
-  margin: 0;
+    background: $white;
+    border: 2px solid $green;
+    display: none;
+    margin: 0;
+    padding: 5px 10px;
 }
 
 .tooltip p {
-  display: block;
-  margin: 0;
-  color: $black;
-  font-size: 14px;
-  font-weight: 300;
+    color: $black;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
 }
 
 .tooltip p span {
-  font-weight: 400;
-  margin-right: 5px;
-  color: $black;
-  font-size: 14px;
+    color: $black;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 5px;
 }
